@@ -16,16 +16,17 @@ $brochures = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body class="bg-gray-100 p-5">
   <h1 class="text-3xl font-bold mb-5">Liste de brochures</h1>
-  <ul class="list-disc pl-5 mb-5">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     <?php foreach ($brochures as $brochure) : ?>
-      <li>
-        <?php echo htmlspecialchars($brochure['title']) . " - " .
-          htmlspecialchars($brochure['company_name']) . " (" .
-          htmlspecialchars($brochure['year_of_edition']) . ") - " .
-          htmlspecialchars($brochure['quantity_available']) . " disponibles"; ?>
-      </li>
+      <div class="bg-white p-4 rounded-lg shadow">
+        <h3 class="text-xl font-bold mb-2"><?php echo htmlspecialchars($brochure['title']); ?></h3>
+        <p class="text-gray-700 mb-2"><?php echo htmlspecialchars($brochure['description']); ?></p>
+        <p class="text-gray-600"><?php echo htmlspecialchars($brochure['company_name']) . " - " .
+                                    htmlspecialchars($brochure['year_of_edition']) . " - " .
+                                    htmlspecialchars($brochure['quantity_available']) . " disponibles"; ?></p>
+      </div>
     <?php endforeach; ?>
-  </ul>
+  </div>
 
   <h2 class="text-2xl font-bold mb-3">Ajouter une brochure</h2>
   <form action="add_brochure.php" method="post" class="bg-white p-5 rounded shadow">

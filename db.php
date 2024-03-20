@@ -1,14 +1,14 @@
 <?php
 
-// Utiliser les variables d'environnement
-$host = 'db';
-$db   = 'contactdb';
-$user = 'root';
-$pass = 'root';
+
+$host = getenv('DB_HOST');
+$db   = getenv('DB_NAME');
+$user = getenv('DB_USER');
+$pass = getenv('DB_PASS');
 
 
 try {
-  $pdo = new PDO("mysql:host=$host", $user, $pass);
+  $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
 
   // Créer la base de données si elle n'existe pas
   $pdo->exec("CREATE DATABASE IF NOT EXISTS `$db`;
