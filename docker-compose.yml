@@ -8,6 +8,8 @@ services:
     volumes:
       - .:/var/www/html/
       - ./.env:/var/www/html/.env
+    env_file:
+      - ./.env
   db:
     image: mysql:5.7
     command: --default-authentication-plugin=mysql_native_password
