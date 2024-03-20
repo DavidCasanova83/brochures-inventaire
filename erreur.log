@@ -11,3 +11,6 @@
 [20-Mar-2024 17:29:08 UTC] PHP Notice:  Undefined index: year_of_edition in /var/www/html/add_brochure.php on line 24
 [20-Mar-2024 17:29:08 UTC] PHP Notice:  Undefined index: quantity_available in /var/www/html/add_brochure.php on line 25
 [20-Mar-2024 17:29:08 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /var/www/html/add_brochure.php:18) in /var/www/html/add_brochure.php on line 85
+[20-Mar-2024 20:11:04 UTC] PHP Warning:  move_uploaded_file(uploads/65fb42d80f28f.png): failed to open stream: No such file or directory in /var/www/html/add_brochure.php on line 62
+[20-Mar-2024 20:11:04 UTC] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/php93zLnA' to 'uploads/65fb42d80f28f.png' in /var/www/html/add_brochure.php on line 62
+[20-Mar-2024 20:11:04 UTC] Erreur lors du téléchargement de l'image.
