@@ -21,6 +21,7 @@ try {
     company_name VARCHAR(255),
     year_of_edition YEAR,
     quantity_available INT,
+    image_path VARCHAR(255), 
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );");
 } catch (PDOException $e) {
