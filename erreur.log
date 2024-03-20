@@ -1,0 +1,13 @@
+[20-Mar-2024 17:22:32 UTC] Format de fichier non autorisé.
+[20-Mar-2024 17:28:54 UTC] PHP Notice:  Undefined index: title in /var/www/html/add_brochure.php on line 18
+[20-Mar-2024 17:28:54 UTC] PHP Notice:  Undefined index: description in /var/www/html/add_brochure.php on line 19
+[20-Mar-2024 17:28:54 UTC] PHP Notice:  Undefined index: company_name in /var/www/html/add_brochure.php on line 20
+[20-Mar-2024 17:28:54 UTC] PHP Notice:  Undefined index: year_of_edition in /var/www/html/add_brochure.php on line 24
+[20-Mar-2024 17:28:54 UTC] PHP Notice:  Undefined index: quantity_available in /var/www/html/add_brochure.php on line 25
+[20-Mar-2024 17:28:54 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /var/www/html/add_brochure.php:18) in /var/www/html/add_brochure.php on line 85
+[20-Mar-2024 17:29:08 UTC] PHP Notice:  Undefined index: title in /var/www/html/add_brochure.php on line 18
+[20-Mar-2024 17:29:08 UTC] PHP Notice:  Undefined index: description in /var/www/html/add_brochure.php on line 19
+[20-Mar-2024 17:29:08 UTC] PHP Notice:  Undefined index: company_name in /var/www/html/add_brochure.php on line 20
+[20-Mar-2024 17:29:08 UTC] PHP Notice:  Undefined index: year_of_edition in /var/www/html/add_brochure.php on line 24
+[20-Mar-2024 17:29:08 UTC] PHP Notice:  Undefined index: quantity_available in /var/www/html/add_brochure.php on line 25
+[20-Mar-2024 17:29:08 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /var/www/html/add_brochure.php:18) in /var/www/html/add_brochure.php on line 85

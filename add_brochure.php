@@ -1,6 +1,12 @@
 <?php
 include 'db.php';
 
+ini_set('log_errors', 1);
+ini_set('error_log', './erreur.log');
+error_reporting(E_ALL);
+
+
+
 // Vérification du type de requête : s'assurer que le formulaire a été soumis via une requête POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -25,10 +31,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
     // Définition du répertoire cible pour les fichiers téléchargés
     $target_dir = "uploads/";
-    // Création d'un nom de fichier unique pour éviter les écrasements de fichiers
-    $target_file = $target_dir . uniqid() . basename($_FILES["image"]["name"]);
-    // Extraction et conversion en minuscules de l'extension du fichier
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+    // Génération d'un nom de fichier unique basé uniquement sur un identifiant unique
+    $filename = uniqid(); // Seul l'ID unique est utilisé comme nom de fichier
+
+    // Construction du chemin cible complet avec l'extension de fichier
+    $imageFileType = strtolower(pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION));
+    $target_file = $target_dir . $filename . '.' . $imageFileType;
 
     // Vérification du type de fichier - doit être une image
     $check = getimagesize($_FILES["image"]["tmp_name"]);
@@ -38,16 +47,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Vérification de la taille de l'image
-    if ($_FILES["image"]["size"] > 35000000) { // Limite fixée à 35MB
+    if ($_FILES["image"]["size"] > 2097152) { // Limite fixée à 2Mo 
       error_log('Le fichier est trop volumineux.');
       die("Le fichier est trop volumineux.");
     }
 
     // Vérification du format de l'image - autorise uniquement certains formats
-    if (
-      $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-      && $imageFileType != "gif"
-    ) {
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
       error_log('Format de fichier non autorisé.');
       die("Format de fichier non autorisé.");
     }
@@ -58,9 +64,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       die("Erreur lors du téléchargement de l'image.");
     }
 
-    // Encodage des caractères spéciaux du chemin de l'image pour la sécurité
-    $image_path = htmlspecialchars($target_file);
+    // Assignation du chemin final de l'image
+    $image_path = $target_file;
   }
+
 
   // Utilisation de requêtes préparées pour insérer des données - prévient les injections SQL
   $stmt = $pdo->prepare("INSERT INTO brochures (title, description, company_name, year_of_edition, quantity_available, image_path) 
